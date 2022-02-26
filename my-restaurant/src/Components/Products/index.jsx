@@ -6,7 +6,7 @@ import RecipeDetails from "../Details";
 
 
 
-export default function Listado(props) {
+export default function List(props) {
     const [show, setShow] = useState(false);
     const [veganFood, setVeganFood] = useState(()=>{
         if (window.localStorage.getItem("vegan") != null) {
@@ -50,40 +50,40 @@ export default function Listado(props) {
         window.localStorage.setItem("vegan", JSON.stringify(veganFood))
         window.localStorage.setItem("normal", JSON.stringify(normalFood))
     });  
-    function handleProducts(propiedad){
-            if(propiedad.vegan === true && veganFood.length <= 1){   
+    function handleProducts(item){
+            if(item.vegan === true && veganFood.length <= 1){   
                 window.location.reload(false);
-                setVeganFood(prevArray => [...prevArray, propiedad]);
+                setVeganFood(prevArray => [...prevArray, item]);
                 handleVeganLocalStorage();
                 Toast.fire({
                     icon: 'info',
-                    title: 'Cargando...'
+                    title: 'Loading...'
                 })
-            }else if(propiedad.vegan !== true && normalFood.length <= 1){
+            }else if(item.vegan !== true && normalFood.length <= 1){
                 window.location.reload(false);
-                setNormalFood(prevArray => [...prevArray, propiedad]);
+                setNormalFood(prevArray => [...prevArray, item]);
                 handleNormalLocalStorage();
                 Toast.fire({
                     icon: 'info',
-                    title: 'Cargando...'
+                    title: 'Loading...'
                 })
-            }else if(propiedad.vegan === true || veganFood.length == 1){
+            }else if(item.vegan === true || veganFood.length === 1){
                 Swal.fire({
                     icon: 'error',
-                    title: 'El producto no es vegano y/o ya hay suficientes elementos en el menu',
-                    text: 'Por favor elimine un elemento vegano del menu o añada un elemento que sea vegano',
+                    title: 'The product is not vegan and/or there are already enough items on the menu',
+                    text: 'Please remove a vegan item from the menu or add an item that is vegan',
                   })
-            }else if(propiedad.vegan === false || normalFood.length == 1){
+            }else if(item.vegan === false || normalFood.length === 1){
                 Swal.fire({
                     icon: 'error',
-                    title: 'El producto es vegano y/o ya hay suficientes elementos en el menu',
-                    text: 'Por favor elimine un elemento del menu o añada un elemento que no sea vegano',
+                    title: 'The product is vegan and/or there are already enough items on the menu',
+                    text: 'Please remove a menu item or add a non-vegan item',
                   })
             }
     };
-    function deleteProducts(propiedad){
-        let idProduct = propiedad.id
-        if(propiedad.vegan == true){
+    function deleteProducts(item){
+        let idProduct = item.id
+        if(item.vegan === true){
             window.location.reload(false);
             veganFood.splice(getIndice(idProduct), 1)
             window.localStorage.setItem("vegan", JSON.stringify(veganFood))
@@ -98,9 +98,9 @@ export default function Listado(props) {
             }
             Toast.fire({
                 icon: 'info',
-                title: 'Cargando...'
+                title: 'Loading...'
             })
-        }else if (propiedad.vegan == false){
+        }else if (item.vegan === false){
             window.location.reload(false);
             normalFood.splice(getIndice(idProduct), 1)
             window.localStorage.setItem("normal", JSON.stringify(normalFood))
@@ -115,34 +115,34 @@ export default function Listado(props) {
             }
             Toast.fire({
                 icon: 'info',
-                title: 'Cargando...'
+                title: 'Loading...'
             })
         }        
     }
 
     return (
         <div className="list">
-            <h2 className="listTitle">Productos</h2>
+            <h2 className="listTitle">Products</h2>
             <section className="listCard">{
                 props.allProducts ?
-                    props.allProducts.map((propiedad, index) => {
+                    props.allProducts.map((item, index) => {
                         return (
                             <Fragment>
                                 <div className="card" key={index + 1}>
                                     <div className="cardHeader">
-                                        <h2 className="cardTitle">{propiedad.title}</h2>
-                                        <img className="cardImg" src={propiedad.image} alt={propiedad.title} />
+                                        <h2 className="cardTitle">{item.title}</h2>
+                                        <img className="cardImg" src={item.image} alt={item.title} />
                                     </div>
                                     <div className="cardInfo">  
                                     </div>
                                     <div className="cardButton">
-                                        <button className ="button"onClick={() => setShow(!show)}>Detalles</button>
+                                        <button className ="button"onClick={() => setShow(!show)}>Details</button>
                                         <button className= "button"onClick={()=>{
-                                            handleProducts(propiedad)
-                                        }}>Añadir al Menu</button>
+                                            handleProducts(item)
+                                        }}>Add to Menu</button>
                                     </div>
                                     <div className="details">
-                                        {show && <RecipeDetails producto={propiedad} />}
+                                        {show && <RecipeDetails product={item} />}
                                     </div>
                                 </div> 
                             </Fragment>
@@ -157,28 +157,28 @@ export default function Listado(props) {
                     <p className="menuTime">Menu total time: {totalTime}Min</p>
                     <p className="menuHealth">Menu total Health Score: {totalHealth}</p>
                 </div>
-                <h2 className="menuTitle">Mi menu vegano</h2>
+                <h2 className="menuTitle">Vegan menu</h2>
                 <section className="listCard">{
                     veganFood ?
-                        veganFood.map((propiedad, index) => {
+                        veganFood.map((item, index) => {
                             return (
                                 <Fragment>
                                     <div className="card" key={index + 2}>
                                         <div className="cardHeader">
-                                            <h2 className="cardTitle">{propiedad.title}</h2>
-                                            <img className="cardImg" src={propiedad.image} alt={propiedad.title} />
+                                            <h2 className="cardTitle">{item.title}</h2>
+                                            <img className="cardImg" src={item.image} alt={item.title} />
                                         </div>
                                         <div className="cardInfo">  
                                         </div>
                                         <div className="cardButton">
-                                            <button className ="button" onClick={() => setShow(!show)}>Detalles</button>
+                                            <button className ="button" onClick={() => setShow(!show)}>Details</button>
                                             <button className ="button" onClick={() => {
-                                                    deleteProducts(propiedad)
+                                                    deleteProducts(item)
                                                 }}
-                                            >Eliminar del Menu</button>
+                                            >Remove from Menu</button>
                                         </div>
                                         <div className="details">
-                                        {show && <RecipeDetails producto={propiedad} />}
+                                        {show && <RecipeDetails product={item} />}
                                         </div>
                                     </div>
                                 </Fragment>
@@ -188,29 +188,29 @@ export default function Listado(props) {
                 }
                 </section>
                 <hr></hr>
-                <h2 className="menuTitle">Mi menu no vegano</h2>
+                <h2 className="menuTitle">Non vegan menu</h2>
                 <section className="listCard">{
                     normalFood ?
-                        normalFood.map((propiedad, index) => {
+                        normalFood.map((item, index) => {
                             return (
                                 <Fragment>
                                     <div className="card" key={index + 3}>
                                         <div className="cardHeader">
-                                            <h2 className="cardTitle">{propiedad.title}</h2>
-                                            <img className="cardImg" src={propiedad.image} alt={propiedad.title} />
+                                            <h2 className="cardTitle">{item.title}</h2>
+                                            <img className="cardImg" src={item.image} alt={item.title} />
                                         </div>
                                         <div className="cardInfo">  
                                         </div>
                                         <div className="cardButton">
-                                            <button className ="button" onClick={() => setShow(!show)}>Detalles</button>
+                                            <button className ="button" onClick={() => setShow(!show)}>Details</button>
                                               
                                             <button className ="button" onClick={() => {
-                                                    deleteProducts(propiedad)
+                                                    deleteProducts(item)
                                                 }}
-                                            >Eliminar del Menu</button>
+                                            >Remove from Menu</button>
                                         </div>
                                         <div className="details">
-                                            {show && <RecipeDetails producto={propiedad} />}
+                                            {show && <RecipeDetails product={item} />}
                                         </div>
                                     </div>
                                 </Fragment>

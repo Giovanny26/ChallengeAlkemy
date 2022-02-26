@@ -40,8 +40,8 @@ export default function Login(){
             } else {  
                 Swal.fire({
                     icon: 'error',
-                    title: 'Lamentablemente no ha podido iniciar sesión',
-                    text: 'Por favor intente más tarde',
+                    title: 'Unfortunately you were unable to login',
+                    text: 'Please try again later',
                   })
                 }
                })
@@ -51,26 +51,26 @@ export default function Login(){
             window.localStorage.setItem( 'user-token', JSON.stringify({ token : token }) )
         }
     }, [token]); 
-    const validar = (e) => {
+    const validate = (e) => {
         e.preventDefault();
         if (!email || !password) {
             Swal.fire({
                 icon: 'error',
-                title: 'Ingrese un usuario y/o contraseña validos',
-                text: 'Por favor vuelva a intentarlo',
+                title: 'Enter a valid username and/or password',
+                text: 'Please try again',
             });
         }else if(email !== "challenge@alkemy.org" && password !== "react"){
             Swal.fire({
                 icon: 'error',
-                title: 'Comprueba que el correo y la contraseña sean correctos.',
-                text: 'Por favor vuelva a intentarlo',
+                title: 'Check that the email and password are correct',
+                text: 'Please try again',
             });
         }else{
             postAPI();
             setIsDisabled(true);
             Toast.fire({
                 icon: 'info',
-                title: 'Cargando...'
+                title: 'Loading...'
             })
         };
 };
@@ -79,7 +79,7 @@ export default function Login(){
         <div className="sectionForm">
             <form className="loginForm">
                 <div className="email">
-                    <label className="tittleEmail">Correo Electronico</label>
+                    <label className="tittleEmail">Email</label>
                     <input 
                         type = "email" 
                         className="emailInput" 
@@ -89,7 +89,7 @@ export default function Login(){
                     </input>
                 </div>
                 <div className="password">
-                    <label className="tittlePassword">Contraseña</label>
+                    <label className="tittlePassword">password</label>
                     <div className="passwordWraper">
                         <input
                             type={passwordShown ? "text" : "password"}
@@ -108,7 +108,7 @@ export default function Login(){
                     </div>
                 </div>
                 <div className="buttonForm">
-                    <button type="submit" className="btnLogin" onClick={validar} disabled={isDisabled}><p>Ingresar</p></button>
+                    <button type="submit" className="btnLogin" onClick={validate} disabled={isDisabled}><p>Log In</p></button>
                 </div>
             </form>    
         </div>

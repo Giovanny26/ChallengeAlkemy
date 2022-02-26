@@ -6,11 +6,11 @@ export default function RecipeDetails(props){
     return (
         <div className="detail">  
             <ul className="detailList">
-                <li className="detailTitle">Price: ${props.producto.pricePerServing}</li>
-                <li className="detailTitle">Time: {props.producto.readyInMinutes}Min</li>
+                <li className="detailTitle">Price: ${props.product.pricePerServing}</li>
+                <li className="detailTitle">Time: {props.product.readyInMinutes}Min</li>
             </ul>
             <ul className="detailList">
-                <li className="detailTitle">Health Score: {props.producto.healthScore}</li>
+                <li className="detailTitle">Health Score: {props.product.healthScore}</li>
             </ul>
       </div> 
     )
