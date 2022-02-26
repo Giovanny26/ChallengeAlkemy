@@ -1,0 +1,136 @@
+
+.list{
+    background-color: #D5D8DC;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.listTitle{
+    margin-top: 20px;
+    color: black;
+    font-family: "proxima-soft", "Proxima Soft", "Proxima Nova Soft", Helvetica, Arial, sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    text-align: center;
+    font-size: 30px;
+}
+
+.listCard{
+    display: flex;
+    flex-direction: row;
+    gap: 25px;
+}
+
+.card{
+    margin-top: 20px;
+    background-color: #E5E8E8;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    flex-wrap: wrap;
+    border-radius: 5px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.12);
+}
+
+.cardHeader{
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.cardTitle{
+    font-family: "proxima-soft", "Proxima Soft", "Proxima Nova Soft", Helvetica, Arial, sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 19px;
+}
+
+.cardImg{
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.12);
+    margin-top: 20px;
+    border-radius: 5px;
+}
+
+.cardButton{
+    display: flex;
+    gap: 25px;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.button{
+    bottom: 0%;
+    color: #FFFFFF;
+    font-family: "proxima-soft", "Proxima Soft", "Proxima Nova Soft", Helvetica, Arial, sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 19px;
+    text-align: center;
+    background-color: #FF6400;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.12);
+    border-radius: 5px;
+    justify-content: center;
+    border: none;
+    cursor: pointer;
+    margin-top: 25px;
+    height: 45px;
+    padding: 12px 10px;
+}
+
+hr {
+    margin-top: 25px;
+    width: 38.5%;
+    height: 3px;
+    background-color: black;
+}
+
+.titles{
+    width: 50vw;
+    display: flex;
+    gap: 49%;
+}
+.menu{
+    display: flex;
+    gap: 25px;
+}
+
+.menuInfo{
+    font-family: "proxima-soft", "Proxima Soft", "Proxima Nova Soft", Helvetica, Arial, sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 19px;
+    margin-top: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.menuTitle{
+    font-family: "proxima-soft", "Proxima Soft", "Proxima Nova Soft", Helvetica, Arial, sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    text-align: center;
+    font-size: 30px;
+    margin-top: 20px;
+}
+
+.details{
+    margin-bottom: 20px;
+}
+
+.finalPage{
+    margin-bottom: 20px;
+}
+
+
+
