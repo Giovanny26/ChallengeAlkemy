@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/ChallengeAlkemy/static/css/main.16fee5c4.css",
+    "main.js": "/ChallengeAlkemy/static/js/main.1b0d601b.js",
+    "index.html": "/ChallengeAlkemy/index.html",
+    "main.16fee5c4.css.map": "/ChallengeAlkemy/static/css/main.16fee5c4.css.map",
+    "main.1b0d601b.js.map": "/ChallengeAlkemy/static/js/main.1b0d601b.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.16fee5c4.css",
+    "static/js/main.1b0d601b.js"
+  ]
+}
